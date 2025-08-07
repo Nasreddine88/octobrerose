@@ -24,10 +24,13 @@
     html, body {
       height: 100%;
       font-family: 'Poppins', sans-serif;
-      background-color: var(--dark);
+      background-color: var(--dark);  
       color: var(--white);
       scroll-behavior: smooth;
       overflow-x: hidden;
+    background-size: cover;
+    backdrop-filter: blur(8px);
+      background-image: url('canc.png');
     }
     
     header {
@@ -40,6 +43,7 @@
       animation: fadeIn 2s ease-in;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(8px);
     }
 
     .diamond-bg {
@@ -52,6 +56,7 @@
       transform: rotate(45deg);
       transition: filter 0.3s ease;
       z-index: 0;
+      backdrop-filter: blur(8px);
     }
 
     .diamond-bg:hover {
@@ -195,10 +200,10 @@ header h1 {
     }
 
    .works-container {
-  overflow-x: auto;
+  
   white-space: nowrap;
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+
   padding: 1rem 0 3rem;
   display: flex;
   justify-content: center;
@@ -379,11 +384,13 @@ header h1 {
     .content-block {
   margin-bottom: 5rem; /* Espacement général pour tous les blocs */
 }
-
-/* Espacement spécifique entre le bloc 2 et 3 */
-#block2 {
-  margin-bottom: 8rem; /* Ajustez cette valeur selon vos besoins */
+.pink-strip {
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--pink), var(--light-pink));
+  margin: 2rem 0;
 }
+
 
     /* Section T-shirt */
     .tshirt-section {
@@ -426,7 +433,7 @@ header h1 {
     }
 
     .tshirt-image:hover {
-      transform: rotate(-3deg) scale(1.03);
+      transform: rotate(-5deg) scale(1.03);
       border-color: var(--pink);
     }
 
@@ -696,6 +703,11 @@ header h1 {
     .content-block.right {
       flex-direction: row;
     }
+    .content-block:hover {
+      transform: translateY(-10px) !important;
+  box-shadow: 0 30px 45px rgba(255, 105, 180, 0.59) !important;
+  border-color: rgba(249, 80, 165, 0.774) !important;
+}
 
     .content-block.left {
       flex-direction: row-reverse;
@@ -793,7 +805,7 @@ header h1 {
     <div class="diamond-bg diamond8"></div>
     <div class="diamond-bg diamond9"></div>
 
-    <h1 id="wavy-title">Solidarité Rose x Basketball</h1>
+    <h1 id="wavy-title">Solidarité Rose X Basketball</h1>
     <p>Ensemble pour lutter contre le cancer du sein avec l'esprit d'équipe et la force du sport.</p>
     <button class="cta-btn" onclick="document.getElementById('works').scrollIntoView({behavior: 'smooth'});">Soutenir l'initiative</button>
   </header>
@@ -801,7 +813,7 @@ header h1 {
   <div class="floating-title-wrapper">
     <div class="floating-title">✶ Match Caritatif ✶ Campagne Rose ✶ Dépistage ✶ Solidarité ✶ Basketball ✶</div>
   </div>
-
+ <div class="pink-strip"></div>
   <section class="section" id="works">
     <h2>Nos Actions</h2>
     <div class="works-container">
@@ -847,7 +859,7 @@ header h1 {
   </section> 
 
  <section class="content-blocks">
- <div class="content-block left" id="block3">
+ <div class="content-block left" id="block2">
       <div class="content-bg-image" style="background-image: url('https://www.crcdc-normandie.fr/wp-content/uploads/2022/10/AdobeStock_227424389-scaled.jpeg');"></div>
       <div class="content-image" style="background-image: url('https://paysdelaloire.mutualite.fr/content/uploads/sites/53/2016/04/Soutien-pour-la-lutte-contre-le-cancer-du-sein-730-x-480-730x480.jpg');"></div>
         <div class="content-text">
@@ -865,7 +877,7 @@ header h1 {
 </section>
 
 
-<section>
+<section class="content-blocks">
       <div class="content-block right" id="block3">
       <div class="content-bg-image" style="background-image: url('https://media.gettyimages.com/id/637505730/fr/vectoriel/ruban-de-cancer-du-sein.jpg?s=612x612&w=gi&k=20&c=SvXik8Ct7BrrTzt9itib4l9ZPaDG0P0t2gATR4ps_n0=');"></div>
       <div class="content-image" style="background-image: url('https://lamaisondubasket.com/wp-content/uploads/2024/08/BALLON_ROSE.png');"></div>
@@ -883,6 +895,7 @@ header h1 {
       </div>
     </div>
   </section>
+   <div class="pink-strip"></div>
   <!-- Section T-shirt -->
   <section class="tshirt-section">
     <h2>Soutenez la Recherche</h2>
@@ -930,6 +943,7 @@ header h1 {
               <option>M</option>
               <option>L</option>
               <option>XL</option>
+              <option>XXL</option>
             </select>
           </div>
           
@@ -947,7 +961,7 @@ header h1 {
       </div>
     </div>
   </section>
-
+ <div class="pink-strip"></div>
   <footer>
     <div class="footer-content">
       <div class="footer-logo">Solidarité Rose x Basketball</div>
@@ -962,7 +976,7 @@ header h1 {
       </div>
       
       <div class="copyright">
-        <p>© 2025 Campagne Rose x Équipe de Basket – Merci pour votre visite.</p>
+        <p>© 2025 Campagne Rose X Équipe de Basket – Merci pour votre visite.</p>
         <p>Ensemble pour vaincre le cancer du sein</p>
       </div>
       </div>
@@ -1009,7 +1023,7 @@ header h1 {
       
       // Création du lien mailto avec les détails de la commande
       const subject = "Réservation T-Shirt Solidarité Rose";
-      const body = `Je souhaite réserver ${quantity} t-shirt(s) Solidarité Rose taille ${size}.\n\nTotal: ${total}€\n\nMerci de me confirmer la disponibilité et les modalités de paiement.`;
+      const body = `je suis (Nom et Prénom ) ,Je souhaite réserver ${quantity} t-shirt(s) Solidarité Rose taille ${size}.\n\nTotal: ${total}€\n\nMerci de me confirmer la disponibilité et les modalités de paiement.`;
       
       // Ouverture du client mail par défaut
       window.location.href = `mailto:123456@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
