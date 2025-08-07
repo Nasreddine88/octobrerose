@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solidarity x Basketball</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --pink: #ff69b4;
+      --dark: #121212;
+      --white: #ffffff;
+      --light-pink: #ffc0cb;
+      --darker: #0a0a0a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);
+      color: var(--white);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diamond-bg {
+      position: absolute;
+      width: 450px;
+      height: 900px;
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px) brightness(0.5);
+      transform: rotate(45deg);
+      transition: filter 0.3s ease;
+      z-index: 0;
+    }
+
+    .diamond-bg:hover {
+      filter: blur(0px) brightness(1);
+    }
+
+    .diamond1 { top: 20%; left: -150px; background-image: url('https://lamaisondubasket.com/wp-content/uploads/2023/09/ballon_rose-seul_ammeliore-300x300.png'); }
+    .diamond2 { bottom: 20%; right: -150px; background-image: url('https://lamaisondubasket.com/wp-content/uploads/2023/09/ballon_rose-seul_ammeliore-300x300.png'); }
+    .diamond3 { top: 40%; right: -200px; background-image: url('https://www.mongeneraliste.be/wp-content/uploads/2012/11/depcancersein.jpg'); }
+    .diamond4 { bottom: 40%; left: -200px; background-image: url('https://st2.depositphotos.com/3394007/8878/v/450/depositphotos_88780350-stock-illustration-realistic-pink-ribbon-icons-breast.jpg'); }
+    .diamond5 { top: 60%; left: 50%; transform: translate(-50%, -62%) rotate(45deg); background-image: url('https://img1.bonnesimages.com/bi/octobre-rose/octobre-rose_008.png'); opacity: 0.3; }
+    .diamond6 { top: 30%; left: 60%; background-image: url('https://www.ville-bonneuil.fr/fileadmin/_processed_/5/c/csm_OctobreRose_80ea60ae0d.png'); }
+    .diamond7 { bottom: 30%; right: 60%; background-image: url('https://www.carenews.com/sites/default/files/styles/large_actualites/public/2020-10/octobre-rose-2020-depistage-pandemie.jpg?itok=ZhMFN6zm'); }
+    .diamond8 { bottom: -15%; left: 350px; background-image: url('https://img.freepik.com/photos-premium/ballon-basket-neons-balle-bleue-dessus_853115-1308.jpg'); }
+    .diamond9 { top: -10%; right: 350px; background-image: url('https://media.istockphoto.com/id/1686043637/fr/vectoriel/journ%C3%A9e-mondiale-du-cancer-du-sein.jpg?s=612x612&w=0&k=20&c=10f72_HqE5r8ksgQHtXctcHrwxLGOe9YeuPeyIp1DgY='); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header h1 {
+  font-size: 4rem; /* Augmentation de la taille (était 3rem) */
+  color: var(--pink);
+  animation: slideInDown 1.2s ease-out;
+  transition: transform 0.2s ease;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 2;
+  text-shadow: 
+    0 0 15px rgba(255, 105, 180, 0.5),
+    /* Bordures noires simulées avec ombre textuelle */
+    2px 0 0 var(--dark),
+    -2px 0 0 var(--dark),
+    0 2px 0 var(--dark),
+    0 -2px 0 var(--dark);
+  padding: 0.2em 0.4em; /* Espace autour du texte pour les bordures */
+  letter-spacing: 1px; /* Espacement entre les lettres */
+}
+header h1 {
+  /* ... autres propriétés ... */
+  text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+  -webkit-text-stroke: 2px var(--dark); /* Bordure noire */
+  paint-order: stroke fill; /* Pour que la bordure soit derrière le texte */
+}
+
+    header p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      animation: slideInUp 1.5s ease-out;
+      z-index: 2;
+      max-width: 700px;
+      padding: 0 1rem;
+    }
+
+    @keyframes slideInDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @media (max-width: 768px) {
+  header h1 {
+    font-size: 2.8rem; /* Augmentation (était 2.2rem) */
+    /* Conserver les autres propriétés */
+  }
+}
+
+    .cta-btn {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--pink);
+      border: none;
+      color: var(--white);
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: fadeIn 2.5s ease-in;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .cta-btn:hover {
+      background-color: var(--light-pink);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .floating-title-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+      background-color: transparent;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    .floating-title {
+      display: inline-block;
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: var(--pink);
+      animation: floatText 25s linear infinite;
+      padding: 0.5rem 0;
+    }
+
+    @keyframes floatText {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .section {
+      padding: 5rem 2rem;
+      background-color: var(--dark);
+    }
+
+    .section h2 {
+      color: var(--pink);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--pink);
+      border-radius: 3px;
+    }
+
+   .works-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 0 3rem;
+  display: flex;
+  justify-content: center;
+  max-width: 1500px;      /* Limite la largeur max du container */
+  margin: 0 auto;         /* Centre horizontalement le container */
+  box-sizing: border-box; /* Pour bien gérer padding */
+}
+
+.work-card {
+  display: inline-block;
+  width: 320px;
+  max-width: 100%;        /* Empêche la carte de dépasser le container */
+  margin: 0 1.5rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  scroll-snap-align: start;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 105, 180, 0.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  flex-shrink: 0;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-align: center;     /* Centre le texte à l'intérieur */
+  box-sizing: border-box;
+}
+
+.work-card img {
+  max-width: 100%;        /* L'image ne dépassera jamais la largeur de la carte */
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;    /* Centre l'image et ajoute un peu d'espace en dessous */
+  border-radius: 0.5rem;
+}
+
+.work-card p {
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.work-card h3 {
+  color: var(--light-pink);
+  margin: 1.5rem 0 1rem;
+  font-size: 1.5rem;
+  word-break: break-word;
+}
+
+/* Animations pour les cartes */
+.work-card {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.work-card.animated {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Animation spécifique pour chaque carte avec un délai */
+.work-card:nth-child(1) { transition-delay: 0.1s; }
+.work-card:nth-child(2) { transition-delay: 0.3s; }
+.work-card:nth-child(3) { transition-delay: 0.5s; }
+.work-card:nth-child(4) { transition-delay: 0.7s; }
+.work-card {
+  will-change: transform, opacity;
+}
+.work-card:hover {
+  transform: translateY(-10px) rotate(2deg) !important;
+}
+/* Effet hover pour les cartes */
+.work-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3) !important;
+  border-color: rgba(255, 105, 180, 0.5) !important;
+}
+.content-blocks {
+  padding: 0 2rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;         /* Centre aussi ce bloc au milieu */
+  box-sizing: border-box;
+}
+    /* Nouveaux blocs - CORRIGÉ */
+    .content-blocks {
+      padding: 0 2rem 5rem;
+    }
+
+    .content-block {
+      display: flex;
+      height: 200vh;
+      align-items: center;
+      margin: 0 auto 7rem;
+      max-width: 1200px;
+      background: linear-gradient(to right, #1a1a1a, #1f1f1f);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 105, 180, 0.1);
+    }
+
+    .content-block.right {
+      flex-direction: row;
+    }
+
+    .content-block.left {
+      flex-direction: row-reverse;
+    }
+
+    .content-image {
+      flex: 1;
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-image:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,105,180,0.1), rgba(18,18,18,0.8));
+    }
+
+    .content-text {
+      flex: 1;
+      padding: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .content-text h3 {
+      color: var(--pink);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .content-text h3:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--pink);
+    }
+
+    .content-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ddd;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-text ul {
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .content-text li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .content-text li:before {
+      content: '✓';
+      color: var(--pink);
+      position: absolute;
+      left: -1.5rem;
+    }
+    .content-block {
+  margin-bottom: 5rem; /* Espacement général pour tous les blocs */
+}
+
+/* Espacement spécifique entre le bloc 2 et 3 */
+#block2 {
+  margin-bottom: 8rem; /* Ajustez cette valeur selon vos besoins */
+}
+
+    /* Section T-shirt */
+    .tshirt-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tshirt-section h2 {
+      color: var(--pink);
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+
+    .tshirt-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .tshirt-image-container {
+      flex: 1;
+      min-width: 300px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .tshirt-image {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      transition: all 0.5s ease;
+      border: 5px solid rgba(255, 105, 180, 0.2);
+    }
+
+    .tshirt-image:hover {
+      transform: rotate(-3deg) scale(1.03);
+      border-color: var(--pink);
+    }
+
+    .tshirt-info {
+      flex: 1;
+      min-width: 300px;
+      padding: 2rem;
+      text-align: left;
+    }
+
+    .tshirt-info h3 {
+      color: var(--pink);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tshirt-info p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: #ddd;
+    }
+
+    .tshirt-features {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-right: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature i {
+      color: var(--pink);
+      font-size: 1.5rem;
+      margin-right: 0.8rem;
+    }
+
+    .reservation-form {
+      background: #1f1f1f;
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      max-width: 500px;
+      margin: 2rem auto 0;
+      display: none;
+      border: 1px solid rgba(255, 105, 180, 0.3);
+    }
+
+    .reservation-form.visible {
+      display: block;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--light-pink);
+      font-weight: 600;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: none;
+      background: #2a2a2a;
+      color: white;
+      font-size: 1rem;
+      border: 1px solid #444;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--pink);
+      box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
+    }
+
+    .price-display {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--pink);
+      margin: 1.5rem 0;
+    }
+
+    .contact-email {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #444;
+      color: var(--light-pink);
+      font-size: 1.1rem;
+    }
+
+    .contact-email a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    .contact-email a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0a0a0a;
+      text-align: center;
+      color: #aaa;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--pink);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+
+/* Signature */
+    .signature {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    
+    .signature a {
+      color: var(--pink);
+      text-decoration: none;
+    }
+    
+    .signature a:hover {
+      text-decoration: underline;
+    }
+    .copyright {
+      width: 100%;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #222;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .content-block {
+        flex-direction: column;
+        margin-bottom: 5rem;
+      }
+      
+      .content-image {
+        width: 100%;
+        min-height: 300px;
+      }
+      
+      .tshirt-container {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .section {
+        padding: 4rem 1rem;
+      }
+      
+      .work-card {
+        width: 280px;
+        margin: 0 1rem;
+      }
+      
+      .content-text {
+        padding: 2rem;
+      }
+      
+      .floating-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content-text {
+        padding: 1.5rem;
+      }
+      
+      .reservation-form {
+        padding: 1.5rem;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+    .content-blocks {
+      padding: 0 2rem 5rem;
+      position: relative;
+    }
+
+    .content-block-wrapper {
+      position: relative;
+      margin-bottom: 7rem;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .content-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px) brightness(0.7);
+      z-index: -1;
+    }
+
+    .content-block {
+      display: flex;
+      height: 10vh;
+      min-height: 600px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(26, 26, 26, 0.85);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 105, 180, 0.1);
+      backdrop-filter: blur(2px);
+    }
+
+    .content-block.right {
+      flex-direction: row;
+    }
+
+    .content-block.left {
+      flex-direction: row-reverse;
+    }
+    @keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Styles pour les blocs animés */
+.content-block {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.content-block.animated.right {
+  animation: slideInRight 0.8s forwards;
+}
+
+.content-block.animated.left {
+  animation: slideInLeft 0.8s forwards;
+}
+
+    .content-image {
+      flex: 1;
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-image:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,105,180,0.1), rgba(18,18,18,0.8));
+    }
+
+    .content-text {
+      flex: 1;
+      padding: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ... (rester du CSS existant) ... */
+
+    @media (max-width: 992px) {
+      .content-block {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+      }
+      
+      .content-image {
+        width: 100%;
+        min-height: 300px;
+      }
+    }
+    
+    
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="diamond-bg diamond1"></div>
+    <div class="diamond-bg diamond2"></div>
+    <div class="diamond-bg diamond3"></div>
+    <div class="diamond-bg diamond4"></div>
+    <div class="diamond-bg diamond5"></div>
+    <div class="diamond-bg diamond6"></div>
+    <div class="diamond-bg diamond7"></div>
+    <div class="diamond-bg diamond8"></div>
+    <div class="diamond-bg diamond9"></div>
+
+    <h1 id="wavy-title">Solidarité Rose x Basketball</h1>
+    <p>Ensemble pour lutter contre le cancer du sein avec l'esprit d'équipe et la force du sport.</p>
+    <button class="cta-btn" onclick="document.getElementById('works').scrollIntoView({behavior: 'smooth'});">Soutenir l'initiative</button>
+  </header>
+
+  <div class="floating-title-wrapper">
+    <div class="floating-title">✶ Match Caritatif ✶ Campagne Rose ✶ Dépistage ✶ Solidarité ✶ Basketball ✶</div>
+  </div>
+
+  <section class="section" id="works">
+    <h2>Nos Actions</h2>
+    <div class="works-container">
+      <div class="work-card">
+        <img src="https://caenbc.com/wp-content/uploads/2024/10/24-25-illustration-OCTOBRE-ROSE-CBC-1.jpg" alt="Match caritatif">
+        <h3>Match caritatif</h3>
+        <p>Un match rose organisé avec l'équipe locale pour sensibiliser et récolter des fonds.</p>
+      </div>
+      <div class="work-card">
+        <img src="https://ih1.redbubble.net/image.2783321837.0330/flat,750x,075,f-pad,750x1000,f8f8f8.jpg" alt="Campagne awareness">
+        <h3>Campagne Awareness</h3>
+        <p>Partenariat avec des joueuses pour partager des témoignages de survivantes.</p>
+      </div>
+      <div class="work-card">
+        <img src="https://www.mongeneraliste.be/wp-content/uploads/2012/11/depcancersein.jpg" alt="Ateliers santé">
+        <h3>Ateliers santé</h3>
+        <p>Sessions éducatives pour encourager le dépistage précoce et les soins.</p>
+      </div>
+      <div class="work-card">
+        <img src="https://curie.fr/_ipx/fit_cover&f_webp&q_80&s_650x415/https://cdn.curie.fr/media/news_image/16027.png" alt="Collecte de fonds">
+        <h3>Collecte de fonds</h3>
+        <p>Vente de maillots roses en édition limitée pour soutenir la recherche.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-blocks">
+      <div class="content-block right" id="block1">
+      <div class="content-bg-image" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/043/993/454/small_2x/neon-basketball-hoop-and-ball-free-photo.jpg');"></div>
+       <div class="content-image" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc');"></div>
+        <div class="content-text">
+          <h3>Le Club de Basket Féminin ABLI</h3>
+          <p>Fondé en 2010, le club ABLI est bien plus qu'une équipe de basket. C'est une famille qui promeut l'empowerment féminin à travers le sport. Nos joueuses, âgées de 16 à 35 ans, s'engagent pour des causes sociales tout en excellant sur le terrain.</p>
+          <p>Cette saison, nous avons décidé de mettre notre énergie au service de la lutte contre le cancer du sein, une cause qui touche particulièrement notre communauté.</p>
+          <ul>
+            <li>Plus de 50 joueuses engagées</li>
+            <li>Championnes régionales 2024</li>
+            <li>Programmes de formation pour les jeunes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+ <section class="content-blocks">
+ <div class="content-block left" id="block3">
+      <div class="content-bg-image" style="background-image: url('https://www.crcdc-normandie.fr/wp-content/uploads/2022/10/AdobeStock_227424389-scaled.jpeg');"></div>
+      <div class="content-image" style="background-image: url('https://paysdelaloire.mutualite.fr/content/uploads/sites/53/2016/04/Soutien-pour-la-lutte-contre-le-cancer-du-sein-730-x-480-730x480.jpg');"></div>
+        <div class="content-text">
+          <h3>La Lutte Contre le Cancer du Sein</h3>
+          <p>Chaque année en France, près de 60 000 nouveaux cas sont diagnostiqués. Le dépistage précoce augmente considérablement les chances de guérison. Notre action vise à sensibiliser les femmes, particulièrement les jeunes sportives, à l'importance des examens réguliers.</p>
+          <p>Les fonds récoltés seront reversés à la recherche et au soutien des patientes, pour améliorer les traitements et soutenir les personnes touchées par cette maladie.</p>
+          <ul>
+            <li>1 femme sur 8 touchée au cours de sa vie</li>
+            <li>90% de guérison avec dépistage précoce</li>
+            <li>Plus de 12 000 décès par an en France</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section>
+      <div class="content-block right" id="block3">
+      <div class="content-bg-image" style="background-image: url('https://media.gettyimages.com/id/637505730/fr/vectoriel/ruban-de-cancer-du-sein.jpg?s=612x612&w=gi&k=20&c=SvXik8Ct7BrrTzt9itib4l9ZPaDG0P0t2gATR4ps_n0=');"></div>
+      <div class="content-image" style="background-image: url('https://lamaisondubasket.com/wp-content/uploads/2024/08/BALLON_ROSE.png');"></div>
+        <div class="content-text">
+          <h3>Basket & Solidarité : Notre Engagement</h3>
+          <p>Le basket nous a appris l'esprit d'équipe, la persévérance et la force collective. Ces valeurs, nous les mettons au service de la lutte contre le cancer.</p>
+          <p>À travers des matchs caritatifs, des ateliers de prévention et des rencontres avec des survivantes, nous créons un pont entre le monde du sport et celui de la santé. Parce que gagner ce combat nécessite la mobilisation de tous.</p>
+          <ul>
+            <li>Matchs caritatifs mensuels</li>
+            <li>Ateliers de prévention dans les écoles</li>
+            <li>Rencontres avec des survivantes</li>
+            <li>Collecte de fonds pour la recherche</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section T-shirt -->
+  <section class="tshirt-section">
+    <h2>Soutenez la Recherche</h2>
+    <div class="tshirt-container">
+      <div class="tshirt-image-container">
+        <img src="https://ih1.redbubble.net/image.2709015651.4767/ssrco,slim_fit_t_shirt,flatlay,fafafa:ca443f4786,front,wide_portrait,x1000-bg,f8f8f8.1.jpg" alt="T-shirt rose de soutien" class="tshirt-image">
+      </div>
+      <div class="tshirt-info">
+        <h3>T-Shirt Édition Limitée "Solidarité Rose"</h3>
+        <p>Chaque t-shirt acheté = 20€ reversés à la recherche contre le cancer du sein. Fabriqué en coton biologique, avec un design exclusif créé par nos joueuses.</p>
+        
+        <div class="tshirt-features">
+          <div class="feature">
+            <i class="fas fa-tshirt"></i>
+            <span>100% coton biologique</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-palette"></i>
+            <span>Design exclusif</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-heart"></i>
+            <span>Soutien à la recherche</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-truck"></i>
+            <span>Livraison en 48h</span>
+          </div>
+        </div>
+        
+        <button class="cta-btn" id="reserve-btn">Réserver mon t-shirt</button>
+        
+        <div class="reservation-form" id="reservation-form">
+          <h3>Réservez votre t-shirt</h3>
+          
+          <div class="form-group">
+            <label for="quantity">Quantité :</label>
+            <input type="number" id="quantity" min="1" value="1">
+          </div>
+          
+          <div class="form-group">
+            <label for="size">Taille :</label>
+            <select id="size">
+              <option>S</option>
+              <option>M</option>
+              <option>L</option>
+              <option>XL</option>
+            </select>
+          </div>
+          
+          <div class="price-display">
+            Prix total : <span id="total-price">20€</span>
+          </div>
+          
+          <button class="cta-btn" onclick="submitReservation()">Confirmer la réservation</button>
+          
+          <div class="contact-email">
+            <p>Pour toute question : <a href="mailto:123456@hotmail.com">123456@hotmail.com</a></p>
+            <p>Votre réservation sera confirmée par email dans les 24h.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Solidarité Rose x Basketball</div>
+      
+     <div class="footer-links">
+  <a href="#works">Actions</a>
+  <a href="mailto:123456@hotmail.com">Contact</a>
+    </div>
+      
+      <div class="signature">
+        Créé avec ❤️ by <a href="https://fr.linkedin.com/in/nasreddine-sarmoume?trk=public_post_follow-view-profile" target="_blank">N.SARMOUME</a>
+      </div>
+      
+      <div class="copyright">
+        <p>© 2025 Campagne Rose x Équipe de Basket – Merci pour votre visite.</p>
+        <p>Ensemble pour vaincre le cancer du sein</p>
+      </div>
+      </div>
+  </footer>
+
+  <script>
+
+    const title = document.getElementById("wavy-title");
+    const header = document.querySelector("header");
+    
+    header.addEventListener("mousemove", e => {
+      const { left, top } = title.getBoundingClientRect();
+      const x = e.clientX - left - title.offsetWidth / 2;
+      const y = e.clientY - top - title.offsetHeight / 2;
+      title.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`;
+    });
+
+    header.addEventListener("mouseleave", () => {
+      title.style.transform = `translate(0, 0)`;
+    });
+
+    // Gestion du formulaire de réservation
+    const reserveBtn = document.getElementById('reserve-btn');
+    const reservationForm = document.getElementById('reservation-form');
+    const quantityInput = document.getElementById('quantity');
+    const totalPrice = document.getElementById('total-price');
+
+    reserveBtn.addEventListener('click', () => {
+      reservationForm.classList.toggle('visible');
+      if (reservationForm.classList.contains('visible')) {
+        reservationForm.scrollIntoView({behavior: 'smooth', block: 'center'});
+      }
+    });
+
+    quantityInput.addEventListener('input', () => {
+      const quantity = parseInt(quantityInput.value) || 1;
+      totalPrice.textContent = (quantity * 20) + '€';
+    });
+
+    function submitReservation() {
+      const quantity = parseInt(quantityInput.value) || 1;
+      const size = document.getElementById('size').value;
+      const total = quantity * 20;
+      
+      // Création du lien mailto avec les détails de la commande
+      const subject = "Réservation T-Shirt Solidarité Rose";
+      const body = `Je souhaite réserver ${quantity} t-shirt(s) Solidarité Rose taille ${size}.\n\nTotal: ${total}€\n\nMerci de me confirmer la disponibilité et les modalités de paiement.`;
+      
+      // Ouverture du client mail par défaut
+      window.location.href = `mailto:123456@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Message temporaire pour l'utilisateur
+      alert(`Merci ! Votre client mail va s'ouvrir pour finaliser votre réservation.`);
+      reservationForm.classList.remove('visible');
+    }
+    // Animation au scroll
+const blocks = document.querySelectorAll('.content-block');
+
+// Animation des blocs au scroll
+const contentBlocks = document.querySelectorAll('.content-block');
+
+function animateBlocks() {
+  const triggerBottom = window.innerHeight * 0.8;
+  
+  contentBlocks.forEach(block => {
+    const blockTop = block.getBoundingClientRect().top;
+    
+    if(blockTop < triggerBottom) {
+      block.classList.add('animated');
+      block.style.opacity = '1';
+    }
+  });
+}
+
+// Optimisation avec Intersection Observer si disponible
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+        entry.target.style.opacity = '1';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  contentBlocks.forEach(block => {
+    observer.observe(block);
+  });
+} else {
+  // Fallback pour les anciens navigateurs
+  window.addEventListener('scroll', animateBlocks);
+  window.addEventListener('load', animateBlocks);
+}
+// Animation des cartes au scroll
+function animateCards() {
+  const cards = document.querySelectorAll('.work-card');
+  const triggerBottom = window.innerHeight * 0.8;
+  
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    
+    if(cardTop < triggerBottom) {
+      card.classList.add('animated');
+    }
+  });
+}
+
+// Utilisation de IntersectionObserver si disponible
+if ('IntersectionObserver' in window) {
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.work-card').forEach(card => {
+    cardObserver.observe(card);
+  });
+} else {
+  // Fallback pour les anciens navigateurs
+  window.addEventListener('scroll', animateCards);
+  window.addEventListener('load', animateCards);
+}
+// Scroll vers le haut de page
+document.querySelectorAll('.scroll-top').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});
+  </script>
+
+</body>
+</html>
