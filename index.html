@@ -8,60 +8,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-  --pink: #ff69b4;
-  --dark: #121212;
-  --white: #ffffff;
-  --light-pink: #ffc0cb;
-  --darker: #0a0a0a;
-}
+      --pink: #ff69b4;
+      --dark: #121212;
+      --white: #ffffff;
+      --light-pink: #ffc0cb;
+      --darker: #0a0a0a;
+    }
 
-/* Remplacer les styles de body existants */
-body {
-  min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  color: var(--white);
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  
-  /* Système de fond adaptatif */
-  background-color: var(--dark);
-  background-image: url('cancer.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  
-  /* Optimisations */
-  image-rendering: -webkit-optimize-contrast;
-  -webkit-font-smoothing: antialiased;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Media Queries */
-@media (max-width: 1024px) {
-  body {
-    background-attachment: scroll;
-    background-size: cover;
-  }
-}
-
-@media (max-width: 768px) {
-  body {
-    background-image: url('cancer-mobile.jpg');
-    background-position: top center;
-  }
-  
-  .diamond-bg {
-    display: none;
-  }
-}
-
-@media (orientation: landscape) and (max-width: 768px) {
-  body {
-    background-position: center 30%;
-  }
-}
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);  
+      color: var(--white);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+     background-position: 0%;
+      background-image: url('cancer.png');
+      background-size: cover;
+    }
     
     header {
       height: 100vh;
