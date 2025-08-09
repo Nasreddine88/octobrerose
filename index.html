@@ -2,16 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <!-- Amélioration du viewport pour mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <!-- Préchargement des polices -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Chargement asynchrone des icônes -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solidarity x Basketball</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --pink: #ff69b4;
@@ -918,35 +912,61 @@ header h1 {
       height: 180px;
     }
   }
-  body {
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    
-    /* Optimisation des images de fond */
-    .diamond-bg, .content-image, .content-bg-image {
-      will-change: transform, opacity;
-    }
-    
-    /* Amélioration du scroll sur iOS */
-    .works-container {
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Prévention du CLS (Layout Shift) */
-    .work-card img, .tshirt-image {
-      aspect-ratio: 1/1;
-      object-fit: cover;
-    }
-    
-    /* Désactivation des animations si préféré */
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
+   @media (max-width: 767px) {
+  .gallery-carousel {
+    height: auto;
+    padding: 1rem 0;
+  }
 
+  .carousel-track {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+  }
+
+  .carousel-item {
+    position: relative !important;
+    width: 45% !important;
+    height: 120px !important;
+    margin: 0.5rem;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: auto !important;
+    border: 2px solid var(--pink) !important;
+  }
+
+  .carousel-item.active {
+    width: 90% !important;
+    height: 180px !important;
+  }
+} 
+@media (max-width: 992px) {
+  /* Début des modifications - blocs mobile */
+  .content-block {
+    flex-direction: column !important;
+    height: auto !important;
+    margin-bottom: 3rem !important;
+  }
+  
+  .content-image {
+    width: 100% !important;
+    min-height: 250px !important;
+    order: 1;
+  }
+  
+  .content-text {
+    order: 2;
+    padding: 2rem !important;
+  }
+  
+  .content-block:hover {
+    transform: none !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4) !important;
+  }
+  /* Fin des modifications - blocs mobile */
+}
   </style>
 </head>
 <body>
@@ -1296,41 +1316,45 @@ document.querySelectorAll('.scroll-top').forEach(link => {
     let autoSlideInterval;
     
     function updateGallery() {
-      items.forEach((item, index) => {
-        const offset = index - currentIndex;
-        const absOffset = Math.abs(offset);
-        
-        // Calcul des positions
-        let transform = '';
-        if (offset === 0) {
-          // Photo centrale
-          transform = 'translateX(0) scale(1.2)';
-          item.style.filter = 'grayscale(0%)';
-          item.style.opacity = '1';
-          item.style.borderColor = 'var(--pink)';
-          item.style.zIndex = '10';
-          item.style.width = '400px';
-          item.style.height = '250px';
-        } else {
-          // Photos latérales
-          const posX = 200 * offset;
-          const scale = 1 - (0.05 * absOffset); // Réduit le scale difference pour 10 photos
-          transform = `translateX(${posX}px) scale(${scale})`;
-          item.style.filter = 'grayscale(100%)';
-          item.style.opacity = 0.9 - (0.2 * absOffset); // Ajusté pour 10 photos
-          item.style.borderColor = '#444';
-          item.style.zIndex = totalItems - absOffset;
-          item.style.width = '300px';
-          item.style.height = '200px';
-        }
-        
-        item.style.transform = transform;
-        item.classList.toggle('active', offset === 0);
-        
-        // Ajout d'une propriété CSS personnalisée pour le responsive
-        item.style.setProperty('--pos', index);
-      });
-    }
+  if (window.innerWidth < 768) {
+    // Mode mobile
+    items.forEach((item, index) => {
+      item.classList.toggle('active', index === currentIndex);
+      if (index === currentIndex) {
+        item.style.borderColor = 'var(--pink)';
+      } else {
+        item.style.borderColor = '#444';
+      }
+    });
+  } else {
+    // Mode desktop (comportement original)
+    items.forEach((item, index) => {
+      const offset = index - currentIndex;
+      const absOffset = Math.abs(offset);
+      
+      if (offset === 0) {
+        item.style.transform = 'translateX(0) scale(1.2)';
+        item.style.filter = 'grayscale(0%)';
+        item.style.opacity = '1';
+        item.style.borderColor = 'var(--pink)';
+        item.style.zIndex = '10';
+        item.style.width = '400px';
+        item.style.height = '250px';
+      } else {
+        const posX = 200 * offset;
+        const scale = 1 - (0.05 * absOffset);
+        item.style.transform = `translateX(${posX}px) scale(${scale})`;
+        item.style.filter = 'grayscale(100%)';
+        item.style.opacity = 0.9 - (0.2 * absOffset);
+        item.style.borderColor = '#444';
+        item.style.zIndex = totalItems - absOffset;
+        item.style.width = '300px';
+        item.style.height = '200px';
+      }
+      item.classList.toggle('active', offset === 0);
+    });
+  }
+}
     
     // Clic sur une photo
     items.forEach((item, index) => {
@@ -1361,43 +1385,6 @@ document.querySelectorAll('.scroll-top').forEach(link => {
     carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
     carousel.addEventListener('mouseleave', resetAutoSlide);
   });
-  // Optimisation du chargement des scripts
-    document.addEventListener('DOMContentLoaded', function() {
-      // Délai minimal pour permettre le First Paint
-      setTimeout(initAll, 100);
-    });
-
-    function initAll() {
-      // [Tout votre JavaScript existant reste le même]
-      // Seule cette optimisation est ajoutée :
-      
-      // Vérification que les éléments existent avant de les manipuler
-      const title = document.getElementById("wavy-title");
-      const header = document.querySelector("header");
-      
-      if(title && header) {
-        header.addEventListener("mousemove", e => {
-          const { left, top } = title.getBoundingClientRect();
-          const x = e.clientX - left - title.offsetWidth / 2;
-          const y = e.clientY - top - title.offsetHeight / 2;
-          title.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`;
-        });
-
-        header.addEventListener("mouseleave", () => {
-          title.style.transform = `translate(0, 0)`;
-        });
-      }
-      
-      // Le reste de vos fonctions JavaScript...
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(initAll, 100);
-});
-
-// Vérification des éléments avant manipulation
-if(title && header) {
-  // Votre code existant
-}
   </script>
 
 </body>
