@@ -1401,6 +1401,10 @@ document.querySelectorAll('.scroll-top').forEach(link => {
     carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
     carousel.addEventListener('mouseleave', resetAutoSlide);
   });
+    // Gestion du redimensionnement
+window.addEventListener('resize', function() {
+  updateGallery();
+});
   </script>
 
 </body>
