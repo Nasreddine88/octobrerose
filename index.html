@@ -1395,26 +1395,28 @@ document.querySelectorAll('.scroll-top').forEach(link => {
       let autoSlideInterval;
       const isMobile = window.innerWidth < 768;
       
-      function updateGallery() {
-        if (isMobile) {
-          // Comportement mobile (vertical)
-          items.forEach((item, index) => {
-            // Toutes les images sont visibles mais seulement l'active est en couleur
-            item.style.opacity = '1';
-            item.style.filter = index === currentIndex ? 'grayscale(0%)' : 'grayscale(100%)';
-            item.style.borderColor = index === currentIndex ? 'var(--pink)' : '#444';
-            item.style.transform = index === currentIndex ? 'scale(1.05)' : 'scale(1)';
-            item.style.zIndex = index === currentIndex ? '10' : '1';
-            
-            if (index === currentIndex) {
-              item.classList.add('active');
-              // Scroll doux vers l'image active
-              item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-              item.classList.remove('active');
-            }
-          });
-        } else {
+     function updateGallery(initialLoad = false) {
+  if (isMobile) {
+    // Comportement mobile (vertical)
+    items.forEach((item, index) => {
+      // Toutes les images sont visibles mais seulement l'active est en couleur
+      item.style.opacity = '1';
+      item.style.filter = index === currentIndex ? 'grayscale(0%)' : 'grayscale(100%)';
+      item.style.borderColor = index === currentIndex ? 'var(--pink)' : '#444';
+      item.style.transform = index === currentIndex ? 'scale(1.05)' : 'scale(1)';
+      item.style.zIndex = index === currentIndex ? '10' : '1';
+      
+      if (index === currentIndex) {
+        item.classList.add('active');
+        // NE PAS faire de scrollIntoView lors du chargement initial
+        if (!initialLoad) {
+          item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  } else {
           // Comportement desktop (horizontal)
           items.forEach((item, index) => {
             const offset = index - currentIndex;
@@ -1464,8 +1466,8 @@ document.querySelectorAll('.scroll-top').forEach(link => {
       }
       
       // Initialisation
-      updateGallery();
-      resetAutoSlide();
+updateGallery(true); // Passez true pour indiquer que c'est le chargement initial
+resetAutoSlide();
       
       // Arrêt au survol (seulement sur desktop)
       if (!isMobile) {
@@ -1481,6 +1483,21 @@ document.querySelectorAll('.scroll-top').forEach(link => {
         }
       });
     });
+    // Au chargement de la page, forcer le scroll en haut
+window.addEventListener('load', function() {
+  // Vérifier si la page n'est pas déjà positionnée ailleurs
+  if (window.location.hash === '') {
+    window.scrollTo(0, 0);
+  }
+});
+
+// Ou alternative plus simple :
+document.addEventListener('DOMContentLoaded', function() {
+  window.scrollTo(0, 0);
+  
+  // [Le reste de votre code d'initialisation...]
+});
+
 
   </script>
 
