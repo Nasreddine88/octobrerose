@@ -2,10 +2,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solidarity x Basketball</title>
+  <!-- Amélioration du viewport pour mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <!-- Préchargement des polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chargement asynchrone des icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <title>Solidarity x Basketball</title>
   <style>
     :root {
       --pink: #ff69b4;
@@ -912,7 +918,35 @@ header h1 {
       height: 180px;
     }
   }
+  body {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
     
+    /* Optimisation des images de fond */
+    .diamond-bg, .content-image, .content-bg-image {
+      will-change: transform, opacity;
+    }
+    
+    /* Amélioration du scroll sur iOS */
+    .works-container {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prévention du CLS (Layout Shift) */
+    .work-card img, .tshirt-image {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+    
+    /* Désactivation des animations si préféré */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1327,6 +1361,43 @@ document.querySelectorAll('.scroll-top').forEach(link => {
     carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
     carousel.addEventListener('mouseleave', resetAutoSlide);
   });
+  // Optimisation du chargement des scripts
+    document.addEventListener('DOMContentLoaded', function() {
+      // Délai minimal pour permettre le First Paint
+      setTimeout(initAll, 100);
+    });
+
+    function initAll() {
+      // [Tout votre JavaScript existant reste le même]
+      // Seule cette optimisation est ajoutée :
+      
+      // Vérification que les éléments existent avant de les manipuler
+      const title = document.getElementById("wavy-title");
+      const header = document.querySelector("header");
+      
+      if(title && header) {
+        header.addEventListener("mousemove", e => {
+          const { left, top } = title.getBoundingClientRect();
+          const x = e.clientX - left - title.offsetWidth / 2;
+          const y = e.clientY - top - title.offsetHeight / 2;
+          title.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`;
+        });
+
+        header.addEventListener("mouseleave", () => {
+          title.style.transform = `translate(0, 0)`;
+        });
+      }
+      
+      // Le reste de vos fonctions JavaScript...
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initAll, 100);
+});
+
+// Vérification des éléments avant manipulation
+if(title && header) {
+  // Votre code existant
+}
   </script>
 
 </body>
