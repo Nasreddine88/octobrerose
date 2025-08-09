@@ -1483,20 +1483,18 @@ resetAutoSlide();
         }
       });
     });
-    // Au chargement de la page, forcer le scroll en haut
-window.addEventListener('load', function() {
-  // Vérifier si la page n'est pas déjà positionnée ailleurs
-  if (window.location.hash === '') {
-    window.scrollTo(0, 0);
-  }
+    // Scroll vers le haut dès que possible (même avant le chargement complet)
+document.addEventListener('DOMContentLoaded', function() {
+  window.scrollTo({ top: 0, behavior: 'instant' });
 });
 
-// Ou alternative plus simple :
-document.addEventListener('DOMContentLoaded', function() {
-  window.scrollTo(0, 0);
-  
-  // [Le reste de votre code d'initialisation...]
-});
+// Pour les navigateurs qui restaurent la position après un rafraîchissement
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// Solution supplémentaire pour iOS (empêche le défilement automatique)
+document.body.addEventListener('touchstart', function() {}, false);
 
 
   </script>
