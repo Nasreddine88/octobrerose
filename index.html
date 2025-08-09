@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Solidarity x Basketball</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -1483,20 +1484,26 @@ resetAutoSlide();
         }
       });
     });
-    // Scroll vers le haut dès que possible (même avant le chargement complet)
-document.addEventListener('DOMContentLoaded', function() {
-  window.scrollTo({ top: 0, behavior: 'instant' });
-});
+    // Force le scroll vers le header au chargement et après rafraîchissement
+function scrollToHeader() {
+  const header = document.querySelector('header');
+  if (header) {
+    header.scrollIntoView({ behavior: 'instant' }); // Défilement immédiat
+  }
+}
 
-// Pour les navigateurs qui restaurent la position après un rafraîchissement
+// Déclenchement aux deux événements clés
+document.addEventListener('DOMContentLoaded', scrollToHeader);
+window.addEventListener('load', scrollToHeader);
+
+// Empêche Chrome/Safari de restaurer l'ancienne position
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
 
-// Solution supplémentaire pour iOS (empêche le défilement automatique)
+// Contournement pour iOS (nécessaire sur certains appareils)
 document.body.addEventListener('touchstart', function() {}, false);
-
-
+setTimeout(scrollToHeader, 100); // Petit délai pour contourner des bugs iOS
   </script>
 
 </body>
