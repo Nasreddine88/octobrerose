@@ -200,24 +200,29 @@ header h1 {
       border-radius: 3px;
     }
 
-   .works-container {
+.works-container {
   overflow-x: auto;
   white-space: nowrap;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 1rem 0 3rem;
   display: flex;
-  justify-content: center;
-  max-width: 1500px;      /* Limite la largeur max du container */
-  margin: 0 auto;         /* Centre horizontalement le container */
-  box-sizing: border-box; /* Pour bien gérer padding */
+  justify-content: flex-start; /* Changé de center à flex-start */
+  max-width: 100%; /* Suppression de la limite de largeur */
+  margin: 0 auto;
+  box-sizing: border-box;
+  scrollbar-width: none; /* Cache la scrollbar sur Firefox */
+  -ms-overflow-style: none; /* Cache la scrollbar sur IE/Edge */
+}
+.works-container::-webkit-scrollbar {
+  display: none; /* Cache la scrollbar sur Chrome/Safari */
 }
 
 .work-card {
   display: inline-block;
-  width: 250px;
-  max-width: 100%;        /* Empêche la carte de dépasser le container */
-  margin: 0 1.5rem;
+  width: 280px; /* Largeur légèrement augmentée */
+  min-width: 280px; /* Garantit une largeur minimale */
+  margin: 0 15px; /* Espacement uniforme */
   border-radius: 1rem;
   padding: 1.5rem;
   scroll-snap-align: start;
@@ -228,8 +233,28 @@ header h1 {
   white-space: normal;
   word-wrap: break-word;
   overflow: hidden;
-  text-align: center;     /* Centre le texte à l'intérieur */
+  text-align: center;
   box-sizing: border-box;
+}
+    .works-container::before,
+.works-container::after {
+  content: '';
+  min-width: 1rem;
+  display: inline-block;
+  height: 1px;
+}
+    /* Responsive pour petits écrans */
+@media (max-width: 480px) {
+  .work-card {
+    width: 85vw; /* Utilise 85% de la largeur de l'écran */
+    min-width: 85vw;
+    margin: 0 10px;
+  }
+  
+  .works-container::before,
+  .works-container::after {
+    min-width: 0.5rem;
+  }
 }
 
 .work-card img {
@@ -1071,7 +1096,7 @@ header h1 {
     <div class="floating-title">✶ Match Caritatif ✶ Campagne Rose ✶ Dépistage ✶ Solidarité ✶ Basketball ✶</div>
   </div>
  <div class="pink-strip"></div>
-  <section class="section" id="works">
+ <section class="section" id="works">
     <h2>Nos Actions</h2>
     <div class="works-container">
       <div class="work-card">
@@ -1504,6 +1529,25 @@ if ('scrollRestoration' in history) {
 // Contournement pour iOS (nécessaire sur certains appareils)
 document.body.addEventListener('touchstart', function() {}, false);
 setTimeout(scrollToHeader, 100); // Petit délai pour contourner des bugs iOS
+    // Centrage automatique des cartes au scroll
+const worksContainer = document.querySelector('.works-container');
+if (worksContainer) {
+  worksContainer.addEventListener('scroll', () => {
+    const cards = document.querySelectorAll('.work-card');
+    const containerCenter = worksContainer.scrollLeft + (worksContainer.offsetWidth / 2);
+    
+    cards.forEach(card => {
+      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+      if (Math.abs(containerCenter - cardCenter) < (card.offsetWidth / 2)) {
+        card.style.transform = 'scale(1.05)';
+        card.style.boxShadow = '0 15px 30px rgba(255, 105, 180, 0.3)';
+      } else {
+        card.style.transform = 'scale(1)';
+        card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+      }
+    });
+  });
+}
   </script>
 
 </body>
